@@ -8,7 +8,7 @@
         <div class="container columns">
             <!--Name Section-->
             <div class="column has-text-left-desktop has-text-centered-mobile">
-                <a href="{{site.url}}{{site.baseurl}}/#">
+                <a href="{{site.url}}{{site.baseurl}}/#about">
                     <div class="columns">
                         <div class="column is-one-fifth-desktop is-one-fifth-fullhd is-one-quarter-tablet">
                             <figure class="image is-64x64">
@@ -27,19 +27,31 @@
 
             <!--Link Section-->
             <div class="column has-text-white">
-                <h3>About ADA</h3>
-                <a href="https://epfl-ada.github.io/teaching/fall2023/cs401">ADA</a>
+                <h3>More Links</h3>
+                {% for sitepage in site.html_pages offset: 4 %}
+                {% unless sitepage.url == '/'  limit: 2 %}
+                <li>
+                    <a href="{{sitepage.url | absolute_url}}">{{sitepage.title}}</a>
+                </li>
+                {% endunless %}
+                {% endfor %}
+                <li>
+                    <a target="_blank" href="{{site.url}}{{site.baseurl}}/feed.xml">Subscribe via RSS</a>
+                </li>
             </div>
 
             <!--Blog-post Section-->
             <div class="column has-text-white">
-                <h3>About the project</h3>
-                    <a href="https://github.com/epfl-ada/ada-2023-project-todolegax/tree/Axelinocation#milestone-2">Github</a>
-                    <a href="https://snap.stanford.edu/data/web-BeerAdvocate.html">BeerAdvocate</a>
+                <h3>Recent Posts</h3>
+                {% for post in site.posts offset: 0 limit:3 %}
+                <li>
+                    <a href="{{post.url | absolute_url}}">{{post.title}}</a>
+                </li>
+                {% endfor %}
             </div>
         </div>
     </div>
     <div class="has-background-black has-text-centered has-text-white" id="credits">
-        <i class="far fa-copyright"></i> {{ "now" | date: "%Y" }} |  <a href="https://github.com/thedevslot/WhatATheme" target="_blank" rel="noopener noreferrer">WhatATheme</a> - A Theme made with <i class="fas fa-heart has-text-danger"></i> by <a href="https://www.twitter.com/thedevslot" target="_blank" rel="noopener noreferrer">TheDevsLot</a> Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
+        <i class="far fa-copyright"></i> {{ "now" | date: "%Y" }} | <a href="https://github.com/thedevslot/WhatATheme" target="_blank" rel="noopener noreferrer">WhatATheme</a> - A Theme made with <i class="fas fa-heart has-text-danger"></i> by <a href="https://www.twitter.com/thedevslot" target="_blank" rel="noopener noreferrer">TheDevsLot</a> Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>
     </div>
 </footer>
