@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <div id="map" style="height: 400px;"></div>
+  <script>
+  // Example GeoJSON data
+  const geojsonData = {
+    type: 'FeatureCollection',
+    features: [
+      // Your GeoJSON features go here
+    ]
+  };
+
+  // Step 3: Create a Leaflet map
+  const map = L.map('map').setView([0, 0], 2); // Set initial center and zoom
+
+  // Step 4: Add a Tile Layer (you can choose a different provider)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Step 5: Add GeoJSON layer to the map
+  L.geoJSON(geojsonData).addTo(map);
+  </script>
+</body>
+</html>
+
