@@ -8,19 +8,19 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
 <style>
 body { margin: 0; padding: 0; }
-#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; height: 450px; }
 
 .quake-info {
   position: absolute;
   font-family: sans-serif;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-left: 5px;
   padding: 5px;
   width: 30%;
   border: 2px solid black;
   font-size: 14px;
   color: #222;
-  background-color: #fff;
+  background-color: rgba(240, 248, 255, 0.5);
   border-radius: 3px;
 }
 </style>
@@ -39,10 +39,10 @@ body { margin: 0; padding: 0; }
     const map = new mapboxgl.Map({
     container: 'map',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    //style: 'mapbox://styles/mapbox/streets-v12',
-    style: 'mapbox://styles/mapbox/outdoors-v11',
+    //style: 'mapbox://styles/mapbox/outdoors-v12',
+    style: 'mapbox://styles/mapbox/satellite-streets-v12',
     center: [-100.486052, 37.830348],
-    zoom: 2
+    zoom: 3
     });
     let hoveredPolygonId = null;
 
@@ -50,7 +50,7 @@ body { margin: 0; padding: 0; }
     map.addSource('states', {
     'type': 'geojson',
     //'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson'
-    'data': 'geo.json'
+    'data': 'geo_id.json'
     });
 
 
