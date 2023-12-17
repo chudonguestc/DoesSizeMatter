@@ -1,0 +1,213 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+
+<!--<head>-->
+<!--	&lt;!&ndash; Load plotly.js into the DOM &ndash;&gt;-->
+<!--	<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--	<div id='myDiv'>&lt;!&ndash; Plotly chart will be drawn inside this DIV &ndash;&gt;</div>-->
+
+<!--    <script>-->
+<!--        var data = [{-->
+<!--        type: "choroplethmapbox", locations: ["Maine", "Massachusetts", "Michigan"], z: [-50, -10, -20],-->
+<!--        geojson: "geo_plotly.json"-->
+<!--        }];-->
+
+<!--        var layout = {mapbox: {center: {lon: -74, lat: 43}, zoom: 3.5},-->
+<!--                  width: 600, height:400};-->
+
+<!--        var config = {mapboxAccessToken: "pk.eyJ1IjoiZG9uZ2NodSIsImEiOiJjbHE3NG9tZTIwemxuMmpwYXdmb3Q4dHNuIn0.C2JF_Q_Nkf7Yai41gUxIaw"};-->
+
+<!--        Plotly.newPlot('myDiv', data, layout, config);-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Demo: Make a choropleth map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+<link
+href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+rel="stylesheet"
+/>
+<style>
+body {
+margin: 0;
+padding: 0;
+}
+
+h2,
+h3 {
+margin: 10px;
+font-size: 18px;
+}
+
+h3 {
+font-size: 16px;
+}
+
+p {
+margin: 10px;
+}
+
+.map-overlay {
+position: absolute;
+bottom: 0;
+right: 0;
+background: #fff;
+margin-right: 20px;
+font-family: Arial, sans-serif;
+overflow: auto;
+border-radius: 3px;
+}
+
+#map {
+position: absolute;
+top: 0;
+bottom: 0;
+width: 100%;
+height: 500px;
+}
+
+#features {
+top: 0;
+height: 100px;
+margin-top: 20px;
+width: 250px;
+}
+
+#legend {
+padding: 10px;
+box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+line-height: 18px;
+height: 150px;
+margin-bottom: 40px;
+width: 100px;
+}
+
+.legend-key {
+display: inline-block;
+border-radius: 20%;
+width: 10px;
+height: 10px;
+margin-right: 5px;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="map-overlay" id="features">
+<h2>US census area</h2>
+<div id="pd"><p>Hover over a state!</p></div>
+</div>
+<div class="map-overlay" id="legend"></div>
+
+<script>
+// define access token
+mapboxgl.accessToken = 'pk.eyJ1IjoiZG9uZ2NodSIsImEiOiJjbHE3NG9tZTIwemxuMmpwYXdmb3Q4dHNuIn0.C2JF_Q_Nkf7Yai41gUxIaw';
+
+// create map
+const map = new mapboxgl.Map({
+container: 'map', // container id
+//style: 'mapbox://styles/examples/cjgioozof002u2sr5k7t14dim' // map style URL from Mapbox Studio
+style: 'mapbox://styles/dongchu/clqa12s2a006y01o3erfq1nqy'
+});
+
+// wait for map to load before adjusting it
+map.on('load', () => {
+// make a pointer cursor
+map.getCanvas().style.cursor = 'default';
+
+// set map bounds to the continental US
+map.fitBounds([
+[-133.2421875, 16.972741],
+[-47.63671875, 52.696361]
+]);
+
+// define layer names
+const layers = [
+'0-10',
+'10-20',
+'20-50',
+'50-100',
+'100-200',
+'200-500',
+'500-1000',
+'1000+'
+];
+const colors = [
+'#FFEDA0',
+'#FED976',
+'#FEB24C',
+'#FD8D3C',
+'#FC4E2A',
+'#E31A1C',
+'#BD0026',
+'#800026'
+];
+
+// create legend
+const legend = document.getElementById('legend');
+
+layers.forEach((layer, i) => {
+const color = colors[i];
+const item = document.createElement('div');
+const key = document.createElement('span');
+key.className = 'legend-key';
+key.style.backgroundColor = color;
+
+const value = document.createElement('span');
+value.innerHTML = `${layer}`;
+item.appendChild(key);
+item.appendChild(value);
+legend.appendChild(item);
+});
+
+map.on('mousemove', (event) => {
+  const states = map.queryRenderedFeatures(event.point, {
+    layers: ['geo-mapbox-ca4was']
+  });
+
+  document.getElementById('pd').innerHTML = states.length
+    ? `<h3>${states[0].properties.NAME}</h3><p><strong><em>${states[0].properties.CENSUSAREA}</strong> census area</em></p>`
+    : `<p>Hover over a state!</p>`;
+
+
+<!--    // Function to fetch JSON data and update HTML content-->
+<!--    function fetchDataAndUpdateHTML() {-->
+<!--      fetch('./geo_mapbox.json')-->
+<!--        .then((data) => data.json())-->
+<!--        .then((json) => {-->
+<!--          const states = json['features']; // Assuming the states are directly in the JSON-->
+<!--          console.log(states)-->
+
+<!--          // Update HTML content-->
+<!--          document.getElementById('pd').innerHTML = states.length-->
+<!--            ? `<h3>${states[0].properties.name}</h3><p><strong><em>${states[0].properties.density}</strong> people per square mile</em></p>`-->
+<!--            : `<p>Hover over a state!</p>`;-->
+<!--        })-->
+<!--        .catch((error) => {-->
+<!--          console.error('Error fetching JSON data:', error);-->
+<!--        });-->
+<!--    }-->
+
+<!--    // Call the function to fetch data and update HTML content-->
+<!--    fetchDataAndUpdateHTML();-->
+});
+
+
+
+});
+</script>
+</body>
+</html>
+
