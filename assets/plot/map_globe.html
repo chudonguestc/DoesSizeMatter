@@ -28,8 +28,8 @@ body { margin: 0; padding: 0; }
 <body>
 <div id="map"></div>
 <div class='quake-info'>
-  <div><strong>State:</strong> <span id='state'></span></div>
-  <div><strong>Census area:</strong> <span id='area'></span></div>
+  <div><strong>Name:</strong> <span id='state'></span></div>
+  <div><strong>Number of Breweries:</strong> <span id='area'></span></div>
 </div>
 <script>
 	// TO MAKE THE MAP APPEAR YOU MUST
@@ -50,7 +50,7 @@ body { margin: 0; padding: 0; }
     map.addSource('states', {
     'type': 'geojson',
     //'data': 'https://docs.mapbox.com/mapbox-gl-js/assets/us_states.geojson'
-    'data': 'geo_mapbox.json'
+    'data': 'world_merge_mapbox.json'
     });
 
 
@@ -91,8 +91,8 @@ body { margin: 0; padding: 0; }
     if (hoveredPolygonId !== null) {
 
     //console.log(e.features);
-    stateDisplay.textContent = e.features[0].properties.STATE;
-    areaDisplay.textContent = e.features[0].properties.NAME;
+    stateDisplay.textContent = e.features[0].properties.name;
+    areaDisplay.textContent = e.features[0].properties.nb_breweries;
 
     map.setFeatureState(
     { source: 'states', id: hoveredPolygonId },
