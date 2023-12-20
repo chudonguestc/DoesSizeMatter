@@ -14,8 +14,6 @@
 	d3.csv('Data/bar_chart.csv')
 		.then(
 		function(rows){
-		console.log(rows)
-
 		function unpack(rows, key) {
 			return rows.map(function(row) { return row[key]; });
 		}
@@ -72,12 +70,12 @@
 						label: 'Ratio',
 						method: 'update'
 					},
-					{
-						args: [{'visible': [true, true, false]},
-							   {'title': 'Displaying both the distributions'}],
-						label: 'Both',
-						method: 'update'
-					},
+<!--					{-->
+<!--						args: [{'visible': [true, true, false]},-->
+<!--							   {'title': 'Displaying both the distributions'}],-->
+<!--						label: 'Both',-->
+<!--						method: 'update'-->
+<!--					},-->
 				],
 				direction: 'left',
 				pad: {'r': 30, 't': 20},
