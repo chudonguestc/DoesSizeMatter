@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+	<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+
+    <script>
+	d3.csv('Data/bar_chart.csv')
+		.then(
+		function(rows){
+		console.log(rows)
+
+		function unpack(rows, key) {
+			return rows.map(function(row) { return row[key]; });
+		}
+<!--		const arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length-->
+
+		var button_layer_2_height = 1.2
+		var nbr_reviews = unpack(rows, 'nbr_reviews').map(x => parseFloat(x))
+		var nbr_brew = unpack(rows, 'nbr_brew').map(x => parseFloat(x))
+		var rev_by_brew = unpack(rows, 'rev_by_brew').map(x => parseFloat(x))
+		var date = unpack(rows, 'date')
+
+		var data = [{
+			x: date,
+			y: nbr_reviews,
+			type: 'bar',
+			name: '#Reviews',
+			marker: {color: '#33CFA5'}
+		  },
+		  {
+			x: date,
+			y: nbr_brew,
+			type: 'bar',
+			name: '#Breweries reviewed',
+			line: {color: '#33CFA5'},
+			visible: false
+		  },
+		  {
+			x: date,
+			y: rev_by_brew,
+			name: 'Ratio',
+			type: 'bar',
+			marker: {color: '#F06A6A'}
+		  },
+		]
+
+		var updatemenus=[
+			{
+				buttons: [
+					{
+						args: [{'visible': [true, false, false]},
+							   {'title': 'The number of total reviews by year'}],
+						label: '#Reviews',
+						method: 'update'
+					},
+					{
+						args: [{'visible': [false, true, false]},
+							   {'title': 'The Number of breweries being reviewed by year'}],
+						label: '#Breweries',
+						method: 'update'
+					},
+					{
+						args: [{'visible': [false, false, true,]},
+							   {'title': 'Ratio between number of reviews and number of breweries by year'}],
+						label: 'Ratio',
+						method: 'update'
+					},
+					{
+						args: [{'visible': [true, true, false]},
+							   {'title': 'Displaying both the distributions'}],
+						label: 'Both',
+						method: 'update'
+					},
+				],
+				direction: 'left',
+				pad: {'r': 30, 't': 20},
+				showactive: true,
+				type: 'buttons',
+				x: 0.1,
+				xanchor: 'left',
+				y: button_layer_2_height,
+				yanchor: 'top'
+			},
+
+		]
+
+		var layout = {
+			title: 'Distribution by year',
+			updatemenus: updatemenus,
+			showlegend: false
+		}
+
+
+		Plotly.newPlot("myDiv", data, layout);
+
+		});
+    </script>
+</body>
+</html>
+
+
