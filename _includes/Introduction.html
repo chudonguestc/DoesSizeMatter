@@ -1,0 +1,31 @@
+<section class="section is medium has-text-centered", id="Introduction">
+    <h class="title is-2 is-uppercase ">
+      Introduction
+    </h>
+    <hr class="has-background-black">
+
+    <div class="columns is-centered">
+         <div class="hero-body column is-three-fifths">
+            <div class="content is-marginless has-text-left">
+                <p>Customers are increasingly relying on <b>product rating</b> websites to inform their purchasing decisions. It has been demonstrated that when customers rate a product, they often exhibit a <b>tendency to be influenced by the previous ratings</b> of other customers, a phenomenon known as the <b><i>herding effect</i></b>.</p>
+                <p>Despite this, an unresolved research question revolves around comprehending <b>how ratings might be impacted by the scale of the vendor</b>. In order to try to answer rapidly to this question, the new Dean at EPFL decided to outsource the task to a brand-new data science spinoff of the University, the ToDoLeGAx Inc. Utilizing data sourced from beer reviews websites, ToDoLeGAx's objective is to investigate the <b>connection</b> between the <b>size of vendors</b> (specifically, breweries) and the <b>perceived quality</b> of their products.</p>
+             <p>Through the quantification of brewery size and popularity using <b>predefined metrics</b> and the <b>extraction of sentiment</b> from textual reviews, we want to understand if a correlation exists between vendor size and notoriety and perceived product quality. Additionally, we want to <b>explore the behaviors</b> of diverse consumer bases, considering <b>temporal dimensions</b> (how these phenomena have evolved over the years and seasons within the same year) and <b>spatial dimensions</b> (how these relationships differ across states and countries).</p>
+            </div>
+         </div>
+    </div>
+
+    <h class="title is-2 is-uppercase ">
+      Dive into our datasets
+    </h>
+    <div class="columns is-centered">
+         <div class="hero-body column is-three-fifths">
+            <div class="content is-marginless has-text-left ">
+                <p>The first step before tackling our story is to understand our datasets. Our main source of data is the BeerAdvocate dataset, that contains beer reviews from all over the world over a period that ranges between 1996 and 2017, collected on the website <a href="https://www.beeradvocate.com" target="_blank">BeerAdvocate.com</a>. After the preprocessing, the dataset contains 42'923 beers, 58'199users, 14'158 breweries and a total of 2'587'598 reviews, with both textual content and numerical rating.</p>
+                <iframe src="assets/plot/Temporal.html" left="300px" width="820px" height="420px" frameborder="0" position="relative">Number of reviews and breweries by year</iframe>
+            </div>
+         </div>
+    </div>
+    <img src="{{site.baseurl}}/assets/plot/figures/EDA_review_length_distribution.png" style="margin: 1px; width: 30%; height: 30%;" >
+
+
+  </section>

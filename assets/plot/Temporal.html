@@ -37,8 +37,7 @@
 			y: nbr_brew,
 			type: 'bar',
 			name: '#Breweries reviewed',
-			line: {color: '#33CFA5'},
-			visible: false
+			marker: {color: 'rgb(17, 157, 255)'}
 		  },
 		  {
 			x: date,
@@ -56,11 +55,11 @@
 						args: [{'visible': [true, false, false]},
 							   {'title': 'The number of total reviews by year'}],
 						label: '#Reviews',
-						method: 'update'
+						method: 'update',
 					},
 					{
 						args: [{'visible': [false, true, false]},
-							   {'title': 'The Number of breweries being reviewed by year'}],
+							   {'title': 'The number of breweries being reviewed by year'}],
 						label: '#Breweries',
 						method: 'update'
 					},
@@ -70,16 +69,17 @@
 						label: 'Ratio',
 						method: 'update'
 					},
-<!--					{-->
-<!--						args: [{'visible': [true, true, false]},-->
-<!--							   {'title': 'Displaying both the distributions'}],-->
-<!--						label: 'Both',-->
-<!--						method: 'update'-->
-<!--					},-->
+					{
+						args: [{'visible': [true, true, false]},
+							   {'title': 'Reset'}],
+						label: 'Reset',
+						method: 'update'
+					},
 				],
 				direction: 'left',
 				pad: {'r': 30, 't': 20},
 				showactive: true,
+				showlegend: true,
 				type: 'buttons',
 				x: 0.1,
 				xanchor: 'left',
@@ -91,8 +91,10 @@
 
 		var layout = {
 			title: 'Distribution by year',
+			margin: {t: 100, b:50},
+			width: 800, height:400,
 			updatemenus: updatemenus,
-			showlegend: false
+			showlegend: true
 		}
 
 

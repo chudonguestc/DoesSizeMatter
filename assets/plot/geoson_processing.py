@@ -1,7 +1,7 @@
 # adding ids
 import json as js
 
-with open('world_merge.json') as json_data:
+with open('Data/world_merge_review.json') as json_data:
     geo = js.load(json_data)
 
 for i in range(len(geo['features'])):
@@ -14,19 +14,20 @@ for i in range(len(geo['features'])):
         break
 
     # geo['features'][i]['id'] = i
-with open("world_merge_plotly.json", "w") as outfile:
+with open("world_merge_review_plotly.json", "w") as outfile:
     js.dump(geo, outfile)
 
 
 
-# # print csv values
-# import pandas as pd
-#
-# # Replace 'your_file.csv' with the path to your CSV file
-# file_path = 'world_merge.csv'
-#
-# # Load the CSV file into a DataFrame
-# df = pd.read_csv(file_path)
-#
-# # Display the DataFrame
-# print(list(df.nb_breweries))
+# print csv values
+import pandas as pd
+
+# Replace 'your_file.csv' with the path to your CSV file
+file_path = 'Data/world_merge_review.csv'
+
+# Load the CSV file into a DataFrame
+df = pd.read_csv(file_path)
+
+# Display the DataFrame
+print(list(df.nb_reviewers))
+print(list(df.name))
