@@ -1,9 +1,8 @@
 <section class="section is medium has-text-centered", id="Introduction">
-    <h class="title is-2 is-uppercase ">
+    <h class="title is-3 is-uppercase ">
       Introduction
     </h>
     <hr class="has-background-black">
-
     <div class="columns is-centered">
          <div class="hero-body column is-three-fifths">
             <div class="content is-marginless has-text-left">
@@ -13,8 +12,11 @@
             </div>
          </div>
     </div>
+</section>
 
-    <h class="title is-2 is-uppercase ">
+
+<section class="section is medium has-text-centered">
+    <h class="title is-3 is-uppercase ">
       Dive into our datasets
     </h>
     <hr class="has-background-black">
@@ -26,16 +28,16 @@
             </div>
          </div>
     </div>
-    <img src="{{site.baseurl}}/assets/plot/figures/EDA_review_length_distribution.png" style="margin: 1px; width: 40%; height: 40%;" >
+    <img src="{{site.baseurl}}/assets/plot/figures/EDA_review_length_distribution.png" style="margin: 1px; width: 35%; height: 40%;" >
 
     <div class="columns is-centered">
         <div class="hero-body column is-three-fifths">
                 <div class="content is-marginless has-text-left">
                     <p>It is interesting also to have a look at the geographical distribution of both breweries and reviewers.</p>
                     <p>As evident from the data, <b>there are significantly more breweries in the US</b> compared to other countries. Due to this notable concentration, we'll consider <b>each US state as a distinct 'country'</b>. Additionally, we'll visualize the <b>global distribution of breweries</b> to gain a comprehensive understanding of their geographical spread.</p>
-                    <iframe src="assets/plot/map_colorpleth_brewery.html" left="300px" width="950px" height="420px" frameborder="0" position="relative"></iframe>
+                    <iframe src="assets/plot/map_colorpleth_brewery.html"  width="810px" height="420px" frameborder="0" position="relative"></iframe>
                     <p>We can apply a similar analysis to the <b>user data</b>, in order to see whether or not a geographical similarity can be observed between the distribution of breweries and the distribution of users who give reviews.</p>
-                    <iframe src="assets/plot/map_colorpleth_reviewer.html" left="300px" width="950px" height="420px" frameborder="0" position="relative"></iframe>
+                    <iframe src="assets/plot/map_colorpleth_reviewer.html" width="810px" height="420px" frameborder="0"  position="relative"></iframe>
                     <p>We can see that not only the majority of breweries but also the vast majority of reviewers are located in the USA. This is certainly a crucial factor that we will have to take into account in our future analysis.</p>
                     <p>We can also explore the <b>relative distance</b> between the reviewer and the brewery for each review.</p>
                 </div>
