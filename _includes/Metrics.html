@@ -5,15 +5,43 @@
     <hr class="has-background-black">
     <div class="columns is-centered">
          <div class="hero-body column is-three-fifths">
-                  <div class="content is-marginless has-text-left">
-                      <p>Content</p>
-<!--                      <div class="has-text-centered">-->
-<!--                        <p>The distribution of number of breweries</p>-->
-<!--                        <iframe src="assets/plot/map_colorpleth_brewery.html" left="300px" width="950px" height="420px" frameborder="0" position="relative">Genre plot</iframe>-->
-<!--                      </div>-->
-                  </div>
-      </div>
-
+            <div class="content is-marginless has-text-left ">
+                <p>Before proceeding with our analysis, to quantitatively <b>assess the characteristics of breweries</b> we introduce a key metric, the <b>Size Metric</b>.</p>
+                <p><b>Size Metrics</b></p>
+                <div class="has-text-centered">
+                    <p>\[ Size = \alpha \text{log}(N_r) + \beta \text{log}(N_b) + \gamma \text{log}(N_t) \]</p>
+                </div>
+                <p>With:</p>
+                <P>
+                    <ul>
+                      <li>\(N_r \) = number of reviews normalized by the total number of reviews</li>
+                      <li>\(N_b \) = number of beers produced normalized by the total number of beers</li>
+                      <li>\(N_t \) = number of different types (style) of beer produced normalized by the total number of styles</li>
+                    </ul>
+                </P>
+                <p>The metric is calculated for every year, and then normalized to get values between 0 and 1. <code>A global size metric</code> is then obtained by averaging the size metric over the years.</p>
+            </div>
+         </div>
+    </div>
+    <div class="has-text-centered">
+        <img src="{{site.baseurl}}/assets/plot/figures/size_metric_distribution.png" style="margin: 1px; width: 40%; height: 40%;" ></div>
+    <div class="has-text-centered">
+        <img src="{{site.baseurl}}/assets/plot/figures/evolution_size_metric_over_years.png" style="margin: 1px; width: 40%; height: 40%;" ></div>
+    <iframe src="{{site.baseurl}}/assets/plot/Histogram.html" left="300px" width="900px" height="550px" frameborder="0" position="relative">Number of reviews and breweries by year</iframe>
+    <div class="columns is-centered">
+        <div class="hero-body column is-three-fifths">
+        <div class="content is-marginless has-text-left ">
+            <p>The distribution of breweries' sizes has remained fairly stable over the years. Nevertheless, since around 2014, the proportion of small breweries has tended to increase substantially. This growth can be partly explained by the strong interest in breweries and the creation of craft beers observed between 2015 and 2020. Google searches for the term "brewery", for example, experienced a strong increase during this period, a growth that somehow matches the results given by our size metric.</p>
+        </div>
+     </div>
+    </div>
+    <img src="{{site.baseurl}}/assets/plot/figures/google_search_brewery.png" style="margin: 1px; width: 70%; height: 50%;" ></div>
+        <div class="columns is-centered">
+        <div class="hero-body column is-three-fifths">
+        <div class="content is-marginless has-text-left ">
+            <p>Once we understood how our dataset is structured, and once we defined and fine-tuned a meaningful size metric, we can finally dive into our story.</p>
+        </div>
+     </div>
     </div>
 
   </section>
