@@ -1,0 +1,74 @@
+<section class="section is medium has-text-centered", id="Analysis">
+    <h class="title is-3 is-uppercase ">
+      Is there a relationship between brewery size and the perceived quality of beers?
+    </h>
+    <hr class="has-background-black">
+    <div class="columns is-centered">
+         <div class="hero-body column is-three-fifths">
+            <div class="content is-marginless has-text-left ">
+                <p>Firstly, we would like to understand if there is any perceivable correlation between the size of the brewery and the rating obtained by its products.</p>
+                </div>
+         </div>
+    </div>
+    <div class="has-text-centered">
+        <img src="{{site.baseurl}}/assets/plot/figures/average_rating_vs_size.png" style="margin: 1px; width: 40%; height: 40%;" >
+    </div>
+    <div class="columns is-centered">
+         <div class="hero-body column is-three-fifths">
+                <div class="content is-marginless has-text-left ">
+                    <p>By performing a linear regression analysis, we can clearly see that there is a positive linear correlation between the size metric and the average rating. However, we must remain cautious with these results, as it is likely that other cofounders, not taken into account through our size metric, have though an impact on the average rating obtained by the breweries (it is possible that our size index does not explain everything).</p>
+                    <p>To give statistical relevance to our first impression, we can coarsely divide our breweries into 3 size categories (<b>"small", "medium", "big"</b>). By computing the mean and standard deviation of the ratings for each one of the 3 categories, we can then perform an hypothesis testing to see if there is some statistical differencens in terms of ratings.</p>
+                </div>
+         </div>
+    </div>
+    <div class="has-text-centered">
+        <img src="{{site.baseurl}}/assets/plot/figures/avg_rating_sizecategories.png" style="margin: 1px; width: 40%; height: 40%;" >
+    </div>
+    <div class="columns is-centered">
+         <div class="hero-body column is-three-fifths">
+                <div class="content is-marginless has-text-left ">
+                    <p>By setting a null hypothesis \(H_0\): There is no statistically significant difference in average rating between the breweries size categories., we can perform a t-test analysis to see if the size category of a brewery impacts the average rate obtained:</p>
+                    <ul>
+                        <li> T-statistic: \(-23.2306\), P-value: \(0.00000000 \rightarrow\)  The difference in avg. rating is statistically significant between small and medium breweries.</li>
+                        <li>T-statistic: \(-3.4624\), P-value: \(0.00077318 \rightarrow\) The difference in avg. rating is statistically significant between medium and big breweries.</li>
+                    </ul>
+                    <p>It can be seen that belonging to a larger category tends to increase the average rating obtained significantly (at significance level \(0.05\)). An average rating difference of almost \(0.04\) can be observed between small and large breweries. However, we must be careful in drawing conclusions, as the standard deviation remains quite high.</p>
+                    <p>To conclude, larger breweries obtain in average higher ratings and there are less differences in their ratings than for the smaller one. However by looking at the plot, we can see that some small breweries obtain very high ratings (and some even very low one), showing a more "extremal" behaviour than the one of larger breweries.</p>
+                    <p>For example, the 15 breweries with highest average rating are all <code>small</code> breweries. That shows that despite the fact that bigger breweries have higher rating in average, the perceived quality of their products is not as high as the best small breweries. Therefore, being small-scaled can actually be an advantage for obtaining outstanding products. On the other side, larger breweries have in average better grades, but struggle to mantain top level beers.</p>
+                </div>
+         </div>
+    </div>
+
+
+
+
+
+    <h class="title is-3 is-uppercase ">
+      Do larger breweries get longer reviews?
+    </h>
+    <hr class="has-background-black">
+    <div class="columns is-centered">
+         <div class="hero-body column is-three-fifths">
+            <div class="content is-marginless has-text-left ">
+                <p>Untill now we have only looked at the numerical rating. But a review is (usually) much more than just a number, and in every review there is a huge amount of information that can help us to measure the perceived quality of a product. For example, it would be interesting to assess if the brewery size impacts somehow on the average review length obtained by the breweries.</p>
+                </div>
+         </div>
+    </div>
+    <div class="has-text-centered">
+        <img src="{{site.baseurl}}/assets/plot/figures/review_length.png" style="margin: 1px; width: 40%; height: 40%;" >
+    </div>
+    <div class="columns is-centered">
+         <div class="hero-body column is-three-fifths">
+                <div class="content is-marginless has-text-left ">
+                    <p>As before, to give statistical relevance to our first analysis, we divide our breweries into 3 size categories (<b>"small", "medium", "big"</b>). By computing the mean and standard deviation of the ratings for each one of the 3 categories, we can then perform an hypothesis testing to see if there is some statistical differencens in terms of review length.</p>
+                    <p>By setting a null hypothesis \(H_0\): There is no statistically significant difference in average review length between the breweries size categories., we can perform a t-test analysis to see if the size category of a brewery impacts the average review length obtained:</p>
+                    <ul>
+                        <li> T-statistic: \(-12.7465\), P-value: \(0.00000000 \rightarrow\)  The difference in avg. review length is statistically significant between small and medium breweries.</li>
+                        <li>T-statistic: \(-6.4931\), P-value: \( 0.00000000 \rightarrow\) The difference in avg. review length is statistically significant between medium and big breweries.</li>
+                    </ul>
+                    <p>We can see that the difference of review length are significant at the \(0.05\) significance level. However, like in the rating case, it is interesting to see that the longest reviews are given to the small breweries. This shows that some small breweries have reviewers that left more sophisticated reviews than for larger breweries.</p>
+                    </div>
+         </div>
+    </div>
+
+  </section>
