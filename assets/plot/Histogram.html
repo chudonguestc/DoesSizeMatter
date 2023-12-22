@@ -10,7 +10,80 @@
 <body>
 	<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
 
-    <script>
+<!--    <script>-->
+<!--	d3.csv('Data/metrics_hist.csv')-->
+<!--		.then(-->
+<!--		function(rows){-->
+<!--		function unpack(rows, key) {-->
+<!--			return rows.map(function(row) { return row[key]; });-->
+<!--		}-->
+
+<!--		var button_layer_2_height = 1.2-->
+<!--		var size = unpack(rows, 'metrics_by_size').map(x => parseFloat(x))-->
+<!--		var popularity = unpack(rows, 'metrics_by_popularity').map(x => parseFloat(x))-->
+
+<!--		var data = [{-->
+<!--			x: size,-->
+<!--			type: 'histogram',-->
+<!--			name: 'size',-->
+<!--			marker: {color: '#33CFA5'}-->
+<!--		  },-->
+<!--		  {-->
+<!--			x: popularity,-->
+<!--			type: 'histogram',-->
+<!--			name: 'popularity',-->
+<!--			line: {color: '#33CFA5'},-->
+<!--			visible: false-->
+<!--		  },-->
+<!--		]-->
+
+<!--		var updatemenus=[-->
+<!--			{-->
+<!--				buttons: [-->
+<!--					{-->
+<!--						args: [{'visible': [true, false]},-->
+<!--							   {'title': 'Distribution of the breweries based on size metrics'}],-->
+<!--						label: 'size',-->
+<!--						method: 'update'-->
+<!--					},-->
+<!--&lt;!&ndash;					{&ndash;&gt;-->
+<!--&lt;!&ndash;						args: [{'visible': [false, true]},&ndash;&gt;-->
+<!--&lt;!&ndash;							   {'title': 'Distribution of the breweries based on popularity metrics'}],&ndash;&gt;-->
+<!--&lt;!&ndash;						label: 'popularity',&ndash;&gt;-->
+<!--&lt;!&ndash;						method: 'update'&ndash;&gt;-->
+<!--&lt;!&ndash;					},&ndash;&gt;-->
+<!--&lt;!&ndash;					{&ndash;&gt;-->
+<!--&lt;!&ndash;						args: [{'visible': [true, true]},&ndash;&gt;-->
+<!--&lt;!&ndash;							   {'title': 'Distribution of breweries on both size and popularity metrics'}],&ndash;&gt;-->
+<!--&lt;!&ndash;						label: 'Both',&ndash;&gt;-->
+<!--&lt;!&ndash;						method: 'update'&ndash;&gt;-->
+<!--&lt;!&ndash;					},&ndash;&gt;-->
+<!--				],-->
+<!--				direction: 'left',-->
+<!--				pad: {'r': 30, 't': 20},-->
+<!--				showactive: true,-->
+<!--				type: 'buttons',-->
+<!--				x: 0.1,-->
+<!--				xanchor: 'left',-->
+<!--				y: button_layer_2_height,-->
+<!--				yanchor: 'top'-->
+<!--			},-->
+
+<!--		]-->
+
+<!--		var layout = {-->
+<!--			title: 'Distribution of the breweries based on size metrics',-->
+<!--			updatemenus: updatemenus,-->
+<!--			showlegend: true-->
+<!--		}-->
+
+
+<!--		Plotly.newPlot("myDiv", data, layout);-->
+
+<!--		});-->
+<!--    </script>-->
+
+	<script>
 	d3.csv('Data/metrics_hist.csv')
 		.then(
 		function(rows){
@@ -20,68 +93,25 @@
 
 		var button_layer_2_height = 1.2
 		var size = unpack(rows, 'metrics_by_size').map(x => parseFloat(x))
-		var popularity = unpack(rows, 'metrics_by_popularity').map(x => parseFloat(x))
 
-		var data = [{
-			x: size,
-			type: 'histogram',
-			name: 'size',
-			marker: {color: '#33CFA5'}
-		  },
-		  {
-			x: popularity,
-			type: 'histogram',
-			name: 'popularity',
-			line: {color: '#33CFA5'},
-			visible: false
-		  },
-		]
 
-		var updatemenus=[
-			{
-				buttons: [
-					{
-						args: [{'visible': [true, false]},
-							   {'title': 'Distribution of the breweries based on size metrics'}],
-						label: 'size',
-						method: 'update'
-					},
-<!--					{-->
-<!--						args: [{'visible': [false, true]},-->
-<!--							   {'title': 'Distribution of the breweries based on popularity metrics'}],-->
-<!--						label: 'popularity',-->
-<!--						method: 'update'-->
-<!--					},-->
-<!--					{-->
-<!--						args: [{'visible': [true, true]},-->
-<!--							   {'title': 'Distribution of breweries on both size and popularity metrics'}],-->
-<!--						label: 'Both',-->
-<!--						method: 'update'-->
-<!--					},-->
-				],
-				direction: 'left',
-				pad: {'r': 30, 't': 20},
-				showactive: true,
-				type: 'buttons',
-				x: 0.1,
-				xanchor: 'left',
-				y: button_layer_2_height,
-				yanchor: 'top'
-			},
-
-		]
-
+		var trace= {
+		  x: size,
+		  type: "histogram",
+		  nbinsx: 30,
+		};
+		var data = [trace];
 		var layout = {
-			title: 'Distribution of the breweries based on size metrics',
-			updatemenus: updatemenus,
-			showlegend: true
-		}
-
-
-		Plotly.newPlot("myDiv", data, layout);
-
-		});
-    </script>
+		  bargap: 0.05,
+		  bargroupgap: 0.2,
+		  barmode: "overlay",
+		  title: "Distribution of the breweries based on size metrics",
+		  xaxis: {title: "Size metrics"},
+		  yaxis: {title: "Number of breweries"}
+		};
+		Plotly.newPlot('myDiv', data, layout);
+	});
+	</script>
 </body>
 </html>
 

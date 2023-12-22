@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Load plotly.js into the DOM -->
+	<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+	<div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+
+	<script>
+	d3.csv('Data/review_length.csv')
+		.then(
+		function(rows){
+		function unpack(rows, key) {
+			return rows.map(function(row) { return row[key]; });
+		}
+
+		var button_layer_2_height = 1.2
+		var length = unpack(rows, 'text').map(x => parseFloat(x))
+
+
+		var trace= {
+		  x: length,
+		  type: "histogram",
+		  nbinsx: 100,
+		};
+		var data = [trace];
+		var layout = {
+		  bargap: 0.05,
+		  bargroupgap: 0.2,
+		  barmode: "overlay",
+		  title: "Distribution of review lengths",
+		  xaxis: {title: "review length"},
+		  yaxis: {title: "Number of breweries"}
+		};
+		Plotly.newPlot('myDiv', data, layout);
+	});
+	</script>
+</body>
+</html>
+
+

@@ -26,10 +26,11 @@
                 <p>The first step before tackling our story is to understand our datasets. Our main source of data is the BeerAdvocate dataset, that contains beer reviews from all over the world over a period that ranges between 1996 and 2017, collected on the website <a href="https://www.beeradvocate.com" target="_blank">BeerAdvocate.com</a>. After the preprocessing, the dataset contains 42'923 beers, 58'199users, 14'158 breweries and a total of 2'587'598 reviews, with both textual content and numerical rating.</p>
                 <iframe src="assets/plot/Temporal.html" left="300px" width="820px" height="420px" frameborder="0" position="relative">Number of reviews and breweries by year</iframe>
                 <p>Over the years, there has also been a noticeable shift in the lengths of reviews.</p>
+                <iframe src="assets/plot/Histogram_review_length.html" left="300px" width="900px" height="470px" frameborder="0" position="relative">Number of reviews and breweries by year</iframe>
             </div>
          </div>
     </div>
-    <img src="{{site.baseurl}}/assets/plot/figures/EDA_review_length_distribution.png" style="margin: 1px; width: 35%; height: 40%;" >
+<!--    <img src="{{site.baseurl}}/assets/plot/figures/EDA_review_length_distribution.png" style="margin: 1px; width: 35%; height: 35%;" >-->
 
     <div class="columns is-centered">
         <div class="hero-body column is-three-fifths">
@@ -41,9 +42,10 @@
                     <iframe src="assets/plot/map_colorpleth_reviewer.html" width="810px" height="420px" frameborder="0"  position="relative"></iframe>
                     <p>We can see that not only the majority of breweries but also the vast majority of reviewers are located in the USA. This is certainly a crucial factor that we will have to take into account in our future analysis.</p>
                     <p>We can also explore the <b>relative distance</b> between the reviewer and the brewery for each review.</p>
+                    <iframe src="assets/plot/Histogram_relevant_distance.html" left="300px" width="900px" height="470px" frameborder="0" position="relative"></iframe>
                 </div>
         </div>
     </div>
-    <img src="{{site.baseurl}}/assets/plot/figures/EDA_reviewer_distance_distribution.png" style="margin: 1px; width: 40%; height: 40%;" >
+<!--    <img src="{{site.baseurl}}/assets/plot/figures/EDA_reviewer_distance_distribution.png" style="margin: 1px; width: 35%; height: 40%;" >-->
 
   </section>
